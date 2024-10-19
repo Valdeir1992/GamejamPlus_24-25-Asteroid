@@ -8,7 +8,7 @@ public class StatsController : MonoBehaviour
     [SerializeField] private float mProjectileSpeed = 2;
     [SerializeField] private int mNumberProjects = 1;
     [SerializeField] private int mDamage = 0;
-    [SerializeField] private int mSpeed = 5;
+    [SerializeField] private float mSpeed = 5;
     [SerializeField] private int mLevel = 1;
     [SerializeField] private float mAcceleration = 10;
     [SerializeField] private float mManeuverability = 5; 
@@ -17,37 +17,40 @@ public class StatsController : MonoBehaviour
    public float ProjectileSpeed { get => mProjectileSpeed; }
    public int Damage { get => mDamage; }
    public int Level { get => mLevel; }
-    public int Speed { get => mSpeed; }
+    public float Speed { get => mSpeed; }
     public float FireRate { get => mFireRate; }
     public float Acceleration { get => mAcceleration; }
     public float Maneuverability { get =>mManeuverability; }
 
-    void Start()
+    public void AddFireRate(float fireRate)
     {
-
+        mFireRate += fireRate;
     }
-
-    void AddNumberProjetcs(int numProjetcs)
+    public void AddNumberProjetcs(int numProjetcs)
     {
         mNumberProjects += numProjetcs;
     }
 
-    void AddProjectileSpeed(float speedProjectile)
+    public void AddProjectileSpeed(float speedProjectile)
     {
         mProjectileSpeed += speedProjectile;
     }
 
-    void AddDamage(int numDamage)
+    public void AddDamage(int numDamage)
     {
         mDamage += numDamage;
     }
+    public void AddManeuverability(float maneuverability)
+    {
+        mManeuverability += maneuverability;
+    }
 
-    void AddSpeed(int numSpeed)
+    public void AddSpeed(float numSpeed)
     {
         mSpeed += numSpeed;
     }
 
-    void AddLevel(int numLevel)
+    public void AddLevel(int numLevel)
     {
         mLevel += numLevel;
     }

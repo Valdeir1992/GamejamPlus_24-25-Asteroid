@@ -8,7 +8,7 @@ public class CharacterMediator : MonoBehaviour
     private MotorController _motorController;
     private WeaponController _weaponController;
     private HealthController _healthController;
-    private bool _fire;
+    private bool _fire; 
     [Inject] private InputController _inputController;
     private void Awake()
     {
@@ -44,8 +44,7 @@ public class CharacterMediator : MonoBehaviour
         _fire = true;
     }
     public void TakeDamage(Damage damage)
-    {
-        Debug.Log(damage.Source);
+    { 
         if (!_healthController.IsInvulnerable)
         {
             _healthController.TakeDamage(damage);

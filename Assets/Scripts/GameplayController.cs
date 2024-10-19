@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
+using Zenject;
 
 public class GameplayController : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class GameplayController : MonoBehaviour
     bool InGameplay;
     public float MaxGameplayTime;
     public Action<float> OnUpdateTime;
-
+    [Inject] private GameplayHudController _gameplayHUDController;
     private void Start()
     {
         StartCoroutine(Corotine_Timer());
@@ -36,8 +34,8 @@ public class GameplayController : MonoBehaviour
 
     }
 
-    private void GameOver()
+    public void GameOver()
     {
-        
+        _gameplayHUDController.ShowGameOverScreen();
     }
 }

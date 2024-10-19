@@ -1,11 +1,13 @@
 using System;
 using System.Collections; 
 using UnityEngine;
+using Zenject;
 
 public class HealthController : MonoBehaviour, IDamageable
 {
     private int _currentLife;
     private bool _isInvulnerable;
+    [Inject] private GameplayController _gameplayController;
     [SerializeField] private int _lifeMax;
     [SerializeField] private float _timeInvulnerable;
     public bool IsInvulnerable { get => _isInvulnerable; }
@@ -17,6 +19,7 @@ public class HealthController : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        _gameplayController.GameOver();
         Destroy(gameObject);
     }
     public void Recovery(int recovery)
