@@ -58,4 +58,5 @@ public class CharacterMediator : MonoBehaviour
 public struct Damage
 {
     public int Amount;
+    public string Source;
 }

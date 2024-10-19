@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour, IDamageable
 {
     private int _currentLife;
-    public Action OnTakeDamage;
+    public Action<DamageInfo> OnTakeDamage;
     public Action OnDie;
     [SerializeField] private int _lifeMax;
 
@@ -15,12 +16,18 @@ public class EnemyBase : MonoBehaviour, IDamageable
     }
     public void TakeDamage(Damage damage)
     {
+        var damageInfo = new DamageInfo() { Amount = damage.Amount, Source = damage.Source };
         _currentLife -= damage.Amount;
-        OnTakeDamage?.Invoke();
+        OnTakeDamage?.Invoke(damageInfo);
         if(_currentLife <= 0)
         {
             Die();
         }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }
 public struct DamageInfo

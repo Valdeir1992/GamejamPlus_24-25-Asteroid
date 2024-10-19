@@ -7,7 +7,7 @@ public class BlockBehaviour : MonoBehaviour
     {
         if (collision.TryGetComponent(out CharacterMediator characterMediator))
         {
-            characterMediator.TakeDamage(new Damage() { Amount = int.MaxValue });
+            characterMediator.TakeDamage(new Damage() { Amount = int.MaxValue, Source ="Barrier" });
         }
     }
 }
