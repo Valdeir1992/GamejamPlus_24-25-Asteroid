@@ -31,9 +31,9 @@ public class Projectile : MonoBehaviour
     }
     public void SetupProjectile(Quaternion quaternion,int damage,int size, float speed)
     {
-        _damage = damage;
-        _size = size;
-        _speed = speed;
+        _damage += damage;
+        _size = +size;
+        _speed = +speed;
         transform.rotation = quaternion;
     }
 }
