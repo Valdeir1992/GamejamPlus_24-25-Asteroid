@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceShip_AudioMenu : MonoBehaviour
+public class SpaceShipAudioMenu : MonoBehaviour
 {
     public AudioSource AudioSource;
     public AudioClip AudioShoot;

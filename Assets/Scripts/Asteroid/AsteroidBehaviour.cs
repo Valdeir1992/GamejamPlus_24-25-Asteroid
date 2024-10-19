@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidBehaviour : MonoBehaviour
+public class AsteroidBehaviour : MonoBehaviour, IDamageable
 {
+    int CurrentLife;
     private float _speed;
     private Vector3 _direction;
     [SerializeField] private AsteroidSize _size;
@@ -11,8 +12,9 @@ public class AsteroidBehaviour : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRender;
 
     private void Start()
-    { 
+    {
         StartCoroutine(Coroutine_CheckDirection());
+        CurrentLife = _startLife;
     }
 
     private void Update()
@@ -52,6 +54,16 @@ public class AsteroidBehaviour : MonoBehaviour
     {
         transform.rotation = rotation;
         _speed = speed;
+    }
+
+    public void TakeDamage(Damage damage)
+    {
+        CurrentLife -= damage.Amount;
+        if (CurrentLife <= 0)
+        {
+            Destroy(gameObject);
+
+        }
     }
 }
 public enum AsteroidSize

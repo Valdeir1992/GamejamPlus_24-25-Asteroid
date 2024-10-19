@@ -24,9 +24,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out IDamageable damageable))
+        if(collision.TryGetComponent(out IDamageable damageable) && !collision.CompareTag("Player"))
         {
             damageable.TakeDamage(new Damage() { Amount = _damage });
+            gameObject.SetActive(false);
         }
     }
     public void SetupProjectile(Quaternion quaternion,int damage,int size, float speed)
