@@ -9,10 +9,12 @@ public class WeaponController : MonoBehaviour
     private float _fireRate = 1;
     private float _lastFire;
     [SerializeField] private Projectile _projectilePrefab;
+    [SerializeField] private Transform _projectileLaunch;
 
     private void Start()
     {
         SetupPool();
+        _lastFire = _fireRate;
     }
     private void SetupPool()
     {
@@ -26,8 +28,7 @@ public class WeaponController : MonoBehaviour
     }
     public void Fire()
     {
-        _lastFire += Time.deltaTime;
-        Debug.Log(_lastFire);
+        _lastFire += Time.deltaTime; 
         if(_lastFire >= _fireRate)
         {
             Debug.Log("Fire");
@@ -41,7 +42,7 @@ public class WeaponController : MonoBehaviour
     private Projectile GetProjectile()
     {
         var projectile = _pool.FirstOrDefault(x=>!x.isActiveAndEnabled);
-        projectile.transform.position = transform.position;
+        projectile.transform.position = _projectileLaunch.position;
         if(projectile == null)
         {
             projectile = Instantiate(_projectilePrefab);
