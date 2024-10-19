@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class AsteroidBehaviour : MonoBehaviour, IDamageable
     int CurrentLife;
     private float _speed;
     private Vector3 _direction;
+    public static Action<int> OnDestroy;
+    [SerializeField] private int _score;
     [SerializeField] private AsteroidSize _size;
     [SerializeField] private int _startLife;
     [SerializeField] private SpriteRenderer _spriteRender;
@@ -61,6 +64,7 @@ public class AsteroidBehaviour : MonoBehaviour, IDamageable
         CurrentLife -= damage.Amount;
         if (CurrentLife <= 0)
         {
+            OnDestroy?.Invoke(_score);
             Destroy(gameObject);
 
         }

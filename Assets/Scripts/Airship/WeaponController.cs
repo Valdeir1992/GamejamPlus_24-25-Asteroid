@@ -21,6 +21,13 @@ public class WeaponController : MonoBehaviour
         SetupPool();
         _lastFire = _statsController.FireRate;
     }
+    private void Update()
+    {
+        if(_lastFire <= _statsController.FireRate)
+        {
+            _lastFire += Time.deltaTime;
+        }
+    }
     private void SetupPool()
     {
         _pool = new HashSet<Projectile>();
@@ -32,8 +39,7 @@ public class WeaponController : MonoBehaviour
         }
     }
     public void Fire()
-    {
-        _lastFire += Time.deltaTime; 
+    { 
         if(_lastFire >= _statsController.FireRate)
         { 
             var projectile = GetProjectile();
