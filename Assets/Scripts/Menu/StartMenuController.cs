@@ -7,22 +7,29 @@ using Zenject;
 
 public class StartMenuController : MonoBehaviour
 {
+
+    private FadeController Fade;
     [Inject(Id ="Play")] private Button _btnPlay;
     [Inject(Id = "Credits")] private Button _btnCredits;
     [Inject] private CreditScreenController _creditsScreenControllerPrefab; 
 
     private void Awake()
     {
+        Fade = FindAnyObjectByType<FadeController>();
         _btnCredits.onClick.AddListener(Credits);
         _btnPlay.onClick.AddListener(Play);
     }
 
-
+    private void Start()
+    {
+        Fade.FadeIn(1, null, 0);
+    }
     private void Play()
     {
+        Fade.FadeOut(1,() => { UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay"); },0);
         _btnCredits.interactable = false;
         _btnPlay.interactable = false;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay");
+        
     }
     public void Credits()
     {

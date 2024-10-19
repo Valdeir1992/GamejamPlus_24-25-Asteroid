@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,11 @@ public class EnemyBase : MonoBehaviour, IDamageable
         {
             Die();
         }
+    }
+
+    private void Die()
+    {
+        throw new NotImplementedException();
     }
 }
 public struct DamageInfo
