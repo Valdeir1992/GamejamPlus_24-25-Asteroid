@@ -45,6 +45,7 @@ public class CharacterMediator : MonoBehaviour
     }
     public void TakeDamage(Damage damage)
     {
+        Debug.Log(damage.Source);
         if (!_healthController.IsInvulnerable)
         {
             _healthController.TakeDamage(damage);
