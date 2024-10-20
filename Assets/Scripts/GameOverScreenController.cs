@@ -14,8 +14,8 @@ public class GameOverScreenController : MonoBehaviour
         _btnExit.onClick.AddListener(Exit);
         _btnMenu.onClick.AddListener(Menu);
         _btnReset.onClick.AddListener(ResetLevel);
-        _scoreView.SetText($"Pontuação da partida: {FindAnyObjectByType<ScoreController>().CurrenScore:D5}");
-        _bestScoreView.SetText($"Maior pontuação: {FindAnyObjectByType<ScoreController>().BestScore:D5}");
+        _scoreView.SetText($"CURRENT SCORE: {FindAnyObjectByType<ScoreController>().CurrenScore:D5}");
+        _bestScoreView.SetText($"HIGHEST SCORE: {FindAnyObjectByType<ScoreController>().BestScore:D5}");
     }
     private void OnDisable()
     {

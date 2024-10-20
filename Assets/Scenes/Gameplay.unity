@@ -1076,13 +1076,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _asteroidPrefab: {fileID: 6630654081478407387, guid: de7d692fcc250434c9e5ba22444dc456, type: 3}
   _waves:
-  - SpawnTime: 0.5
-    Amount: 20
-    StartAmount: 10
+  - SpawnTime: 1
+    Amount: 10
+    StartAmount: 5
   - SpawnTime: 2
     Amount: 20
     StartAmount: 10
-  - SpawnTime: 0.5
+  - SpawnTime: 2
     Amount: 10
     StartAmount: 20
   _radius: 250
@@ -1592,9 +1592,10 @@ MonoBehaviour:
   MaxGameplayTime: 600
   _spaceShips:
   - {fileID: 6026776451629074854, guid: 3e0c25339b4ce944dab33a83dedfc9ca, type: 3}
+  - {fileID: 6026776451629074854, guid: 2b293ab91eae5f6448158ba55561a27d, type: 3}
   _source: {fileID: 1877517557}
-  _audioStart: {fileID: 8300000, guid: c5a6af7adb029df4ba0967bc4de9e7ac, type: 3}
-  _audioLoop: {fileID: 8300000, guid: 8fc623011a7a6154d83ab17c7c5f823a, type: 3}
+  _audioStart: {fileID: 8300000, guid: 2cb6336ae931be949944e8ea87e40af8, type: 3}
+  _audioLoop: {fileID: 8300000, guid: acfea2cb89e9d0847a350eb76733ee14, type: 3}
 --- !u!4 &1877517556
 Transform:
   m_ObjectHideFlags: 0
@@ -1622,7 +1623,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.192
   m_Pitch: 1
   Loop: 0
   Mute: 0

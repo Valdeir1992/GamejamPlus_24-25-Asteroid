@@ -17,6 +17,7 @@ public class AsteroidBehaviour : MonoBehaviour, IDamageable
     private ScoreController _scoreController;
     private CancellationTokenSource _aliveCancellationToken;
     [SerializeField] private SpriteRenderer _spriteRender;
+    public AudioSource AudioAsteroid;
 
     private void Start()
     {
@@ -66,14 +67,24 @@ public class AsteroidBehaviour : MonoBehaviour, IDamageable
         _speed = speed;
     }
 
+    private IEnumerator Corotina_Destroy()
+    {
+        AudioAsteroid.Play();
+        GetComponent<Collider2D>().enabled = false;
+        _spriteRender.enabled = false;
+        yield return new WaitUntil(() => !AudioAsteroid.isPlaying);
+        Destroy(gameObject);
+    }
+
     public void TakeDamage(Damage damage)
     {
         _currentLife -= damage.Amount;
         if (_currentLife <= 0)
         {
+
             _scoreController.UpdateScore(_score);
             _xpController.AddXP(_xp,"Asteroid"); 
-            Destroy(gameObject);
+            StartCoroutine(Corotina_Destroy());
 
         }
     } 

@@ -14,12 +14,14 @@ public class CharacterMediator : MonoBehaviour
     [SerializeField] private Animator _turbineAnimator;
     [SerializeField] private Animator _spaceShipAnimator;
     private InputController _inputController;
+    private SpaceShipAudioController AudioController;
 
     public string Name { get => _name; set => _name = value; }
     public SpaceShipData Data { get => _data; set => _data = value; }
 
     private void Awake()
     {
+        AudioController = GetComponent<SpaceShipAudioController>();
         _motorController = GetComponent<MotorController>();
         _motorController.SetupMediator(this);
         _weaponController = GetComponent<WeaponController>();
@@ -49,18 +51,23 @@ public class CharacterMediator : MonoBehaviour
     }
     private void Move(Vector2 direction)
     {
+
         _motorController.Move(direction);
-        if (!Mathf.Approximately(direction.sqrMagnitude, 0))
+        if (!Mathf.Approximately(direction.x, 0))
         {
             _turbineAnimator.SetBool("Fire",true);
+            AudioController.AudioPropulsionShipOn();
+
         }
         else
         {
+            AudioController.AudioPropulsionShipOff();
             _turbineAnimator.SetBool("Fire", false);
         }
     }
     private void Fire()
     {
+
         _fire = true;
     }
     public void TakeDamage(Damage damage)

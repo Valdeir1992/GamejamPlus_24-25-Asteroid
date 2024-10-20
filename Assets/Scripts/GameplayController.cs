@@ -26,6 +26,7 @@ public class GameplayController : MonoBehaviour
         PlayAudio();
         var spaceShipName = (PlayerPrefs.HasKey("SpaceShip"))? PlayerPrefs.GetString("SpaceShip"): "Bebop";
         Instantiate(_spaceShips.First(x => x.Name == spaceShipName), Vector3.zero, Quaternion.identity);
+        _dificulty = 1;
     }
     private void PlayAudio()
     {
@@ -58,7 +59,7 @@ public class GameplayController : MonoBehaviour
 
             CurrentTime += Time.deltaTime;
             _dificultyTime += Time.deltaTime;
-            if(_dificultyTime > 60)
+            if(_dificultyTime > 100)
             {
                 _dificulty++;
                 _dificultyTime = 0;

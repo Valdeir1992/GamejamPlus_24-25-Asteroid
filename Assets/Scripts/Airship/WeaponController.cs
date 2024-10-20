@@ -12,9 +12,11 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private Transform[] _projectilePosition;
     [SerializeField] private Projectile _projectilePrefab;
     [SerializeField] private Transform _projectileLaunch;
+    private SpaceShipAudioController AudioShip;
 
     private void Awake()
     {
+        AudioShip = GetComponent<SpaceShipAudioController>();
         _statsController = FindAnyObjectByType<StatsController>();
     }
 
@@ -49,7 +51,8 @@ public class WeaponController : MonoBehaviour
     public void Fire()
     { 
         if(_lastFire >= _statsController.FireRate + _mediator.Data.StartFireRate)
-        { 
+        {
+            AudioShip.AudioShooting();
             Projectile projectile = null; 
             _lastFire = 0;
             for (int index = 0; index < Mathf.Clamp(_statsController.NumberProjects + _mediator.Data.StartNumberProjectiles, 1, _projectilePosition.Length); index++)
