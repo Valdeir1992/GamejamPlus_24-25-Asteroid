@@ -50,7 +50,7 @@ public class CharacterMediator : MonoBehaviour
     private void Move(Vector2 direction)
     {
         _motorController.Move(direction);
-        if (!Mathf.Approximately(direction.sqrMagnitude, 0))
+        if (!Mathf.Approximately(direction.y, 0))
         {
             _turbineAnimator.SetBool("Fire",true);
         }
