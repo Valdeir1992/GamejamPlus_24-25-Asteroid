@@ -53,7 +53,7 @@ public class CharacterMediator : MonoBehaviour
     {
 
         _motorController.Move(direction);
-        if (!Mathf.Approximately(direction.x, 0))
+        if (!Mathf.Approximately(direction.y, 0))
         {
             _turbineAnimator.SetBool("Fire",true);
             AudioController.AudioPropulsionShipOn();

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e488b5d3d4fe9b8438736b2a67919225, type: 3}
-  m_Name: New Space Ship Data
+  m_Name: New Space Ship Data 2
   m_EditorClassIdentifier: 
-  _startSpeed: 12
-  _startProjectileSpeed: 20
-  _startFireRate: 1.2
-  _startAcceleration: 10
-  _startManeuverability: 2
-  _startNumberProjectiles: 2
+  _startSpeed: 100
+  _startProjectileSpeed: 30
+  _startFireRate: 0.35
+  _startAcceleration: 200
+  _startManeuverability: 1
+  _startNumberProjectiles: 1
   _startDamage: 0

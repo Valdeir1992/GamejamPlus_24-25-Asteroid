@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e488b5d3d4fe9b8438736b2a67919225, type: 3}
   m_Name: New Space Ship Data 1
   m_EditorClassIdentifier: 
-  _startSpeed: 15
+  _startSpeed: 18
   _startProjectileSpeed: 30
-  _startFireRate: 0.7
-  _startAcceleration: 20
-  _startManeuverability: 3
+  _startFireRate: 0.85
+  _startAcceleration: 25
+  _startManeuverability: 2
   _startNumberProjectiles: 1
   _startDamage: 0

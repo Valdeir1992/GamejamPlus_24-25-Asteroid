@@ -446,7 +446,7 @@ MonoBehaviour:
   mDamage: 0
   mSpeed: 0
   mLevel: 0
-  mAcceleration: 0
+  mAcceleration: 10
   mManeuverability: 0
 --- !u!4 &300280966
 Transform:
@@ -1593,6 +1593,7 @@ MonoBehaviour:
   _spaceShips:
   - {fileID: 6026776451629074854, guid: 3e0c25339b4ce944dab33a83dedfc9ca, type: 3}
   - {fileID: 6026776451629074854, guid: 2b293ab91eae5f6448158ba55561a27d, type: 3}
+  - {fileID: 6026776451629074854, guid: 40034658688112c429b35f2690151182, type: 3}
   _source: {fileID: 1877517557}
   _audioStart: {fileID: 8300000, guid: 2cb6336ae931be949944e8ea87e40af8, type: 3}
   _audioLoop: {fileID: 8300000, guid: acfea2cb89e9d0847a350eb76733ee14, type: 3}
