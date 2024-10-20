@@ -8,13 +8,25 @@ public class CharacterMediator : MonoBehaviour
     private MotorController _motorController;
     private WeaponController _weaponController;
     private HealthController _healthController;
-    private bool _fire; 
-    [Inject] private InputController _inputController;
+    private bool _fire;
+    [SerializeField] private string _name;
+    [SerializeField] private SpaceShipData _data;
+    [SerializeField] private Animator _turbineAnimator;
+    [SerializeField] private Animator _spaceShipAnimator;
+    private InputController _inputController;
+
+    public string Name { get => _name; set => _name = value; }
+    public SpaceShipData Data { get => _data; set => _data = value; }
+
     private void Awake()
     {
         _motorController = GetComponent<MotorController>();
+        _motorController.SetupMediator(this);
         _weaponController = GetComponent<WeaponController>();
+        _weaponController.SetupMediator(this);
         _healthController = GetComponent<HealthController>();
+        _inputController = FindAnyObjectByType<InputController>();
+
     }
     private void OnEnable()
     {
@@ -38,6 +50,14 @@ public class CharacterMediator : MonoBehaviour
     private void Move(Vector2 direction)
     {
         _motorController.Move(direction);
+        if (!Mathf.Approximately(direction.sqrMagnitude, 0))
+        {
+            _turbineAnimator.SetBool("Fire",true);
+        }
+        else
+        {
+            _turbineAnimator.SetBool("Fire", false);
+        }
     }
     private void Fire()
     {

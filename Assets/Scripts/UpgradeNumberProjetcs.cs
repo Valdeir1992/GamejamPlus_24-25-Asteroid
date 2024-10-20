@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Rougue Asteroid/Upgrade/Number of projetcs")]
+[CreateAssetMenu(menuName = "Rogue Asteroid/Upgrade/Number of projetcs")]
 public sealed class UpgradeNumberProjetcs : UpgradeSO
 {
     [SerializeField] private int _value;

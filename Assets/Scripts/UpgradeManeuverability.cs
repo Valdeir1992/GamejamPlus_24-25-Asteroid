@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "Rougue Asteroid/Upgrade/Maneuverability")]
+[CreateAssetMenu(menuName = "Rogue Asteroid/Upgrade/Maneuverability")]
 public sealed class UpgradeManeuverability : UpgradeSO
 {
-    [SerializeField] private int _value;
+    [SerializeField] private float _value;
 
     public override void Upgrade()
     {

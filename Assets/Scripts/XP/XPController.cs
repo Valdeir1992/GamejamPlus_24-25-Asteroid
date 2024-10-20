@@ -1,12 +1,10 @@
-using System;
-using System.Collections;
+using System; 
 using System.Linq;
 using UnityEngine;
 
 public class XPController : MonoBehaviour
 {
-    private int _startLevel = 1;
-    private int _currentLevel;
+    private int _currentLevel = 1;
     private int _currenXP;
     public Action<LevelInfo> OnLevelUp;
     public Action<XPInfo> OnAddXP;
@@ -26,6 +24,7 @@ public class XPController : MonoBehaviour
                 CurrentXP = _currenXP,
                 NextXP = _xpValues.ListXPValue.FirstOrDefault(x => x.Level == _currentLevel + 1).Value
             };
+            _currentLevel++;
             OnLevelUp?.Invoke(levelUp);
         }
     }

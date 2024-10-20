@@ -7,7 +7,8 @@ public class HealthController : MonoBehaviour, IDamageable
 {
     private int _currentLife;
     private bool _isInvulnerable;
-    [Inject] private GameplayController _gameplayController;
+    private bool _isDead;
+    private GameplayController _gameplayController;
     [SerializeField] private int _lifeMax;
     [SerializeField] private float _timeInvulnerable;
     public bool IsInvulnerable { get => _isInvulnerable; }
@@ -15,10 +16,14 @@ public class HealthController : MonoBehaviour, IDamageable
     private void Awake()
     {
         _currentLife = _lifeMax;
+        _gameplayController = FindAnyObjectByType<GameplayController>();
     }
 
     public void Die()
     {
+        if (_isDead)
+            return;
+        _isDead = true;
         _gameplayController.GameOver();
         Destroy(gameObject);
     }

@@ -8,7 +8,7 @@ using System;
 
 public class CardUIController : MonoBehaviour,IPointerClickHandler
 {
-    private Action OnClick;
+    public Action OnClick;
     [SerializeField] private Image _background;
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _descriptionView;
@@ -18,10 +18,9 @@ public class CardUIController : MonoBehaviour,IPointerClickHandler
         OnClick?.Invoke();
     }
 
-    public void SetupCard(Sprite icon, UpgradeSO upgrade)
+    public void SetupCard(UpgradeSO upgrade)
     {
-        OnClick += upgrade.Upgrade;
-        _background.sprite = icon;
+        OnClick += upgrade.Upgrade; 
         _icon.sprite = upgrade.Icon;
         _descriptionView.text = upgrade.Description;
     }

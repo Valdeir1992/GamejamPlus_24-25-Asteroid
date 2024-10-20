@@ -8,21 +8,35 @@ public class ScoreController : MonoBehaviour
     private int _currenScore;
     public Action<int> OnUpdateScore;
 
-
-    private void OnEnable()
-    {
-        AsteroidBehaviour.OnDestroy += UpdateScore;
-    }
-    private void OnDisable()
-    {
-        AsteroidBehaviour.OnDestroy -= UpdateScore;
-    }
-
-
+    public int CurrenScore { get => _currenScore;}
+    public int BestScore { get
+        {
+            if (PlayerPrefs.HasKey("BestScore"))
+            {
+                return PlayerPrefs.GetInt("BestScore");
+            }
+            return 0;
+        } }
 
     public void UpdateScore(int score)
     {
         _currenScore += score;
         OnUpdateScore?.Invoke(_currenScore);
+    }
+
+    public void SaveRecord()
+    {
+        if (PlayerPrefs.HasKey("BestScore"))
+        {
+            var score = PlayerPrefs.GetInt("BestScore");
+            if(score < _currenScore)
+            {
+                PlayerPrefs.SetInt("BestScore", _currenScore);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("BestScore", _currenScore);
+        }
     }
 }

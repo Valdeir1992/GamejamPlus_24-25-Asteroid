@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName ="Rougue Asteroid/Upgrade/Speed")]
+[CreateAssetMenu(menuName ="Rogue Asteroid/Upgrade/Speed")]
 public sealed class UpgradeSpeed : UpgradeSO
 {
     [SerializeField] private float _value;

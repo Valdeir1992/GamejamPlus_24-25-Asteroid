@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +8,7 @@ public class StartMenuController : MonoBehaviour
 {
 
     private FadeController Fade;
+    [SerializeField] private SelectSpaceShipScreenController _selectSpaceShipScreenControllerPrefab;
     [Inject(Id ="Play")] private Button _btnPlay;
     [Inject(Id = "Credits")] private Button _btnCredits;
     [Inject] private CreditScreenController _creditsScreenControllerPrefab; 
@@ -26,7 +26,8 @@ public class StartMenuController : MonoBehaviour
     }
     private void Play()
     {
-        Fade.FadeOut(1,() => { UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay"); },0);
+        var screen = Instantiate(_selectSpaceShipScreenControllerPrefab);
+        screen.OnSelect +=()=> Fade.FadeOut(1,() => { UnityEngine.SceneManagement.SceneManager.LoadScene("Gameplay"); },0);
         _btnCredits.interactable = false;
         _btnPlay.interactable = false;
         

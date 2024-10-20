@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
@@ -7,9 +8,10 @@ public class Projectile : MonoBehaviour
     [SerializeField] private int _damage;
     [SerializeField] private SpriteRenderer _spriteRender;
 
-    private void OnEnable()
-    {
-        transform.localScale = Vector3.one * _size;
+    private void Start()
+    { 
+        StartCoroutine(Coroutine_CheckVisibility());
+        GetComponent<TrailRenderer>().enabled = true;
     }
 
     private void Update()
@@ -24,9 +26,13 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent(out IDamageable damageable) && !collision.CompareTag("Player"))
+        if(!collision.CompareTag("Player"))
         {
-            damageable.TakeDamage(new Damage() { Amount = _damage });
+            if(collision.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.TakeDamage(new Damage() { Amount = _damage });
+                GetComponent<TrailRenderer>().enabled = false;
+            }
             gameObject.SetActive(false);
         }
     }
@@ -34,7 +40,19 @@ public class Projectile : MonoBehaviour
     {
         _damage += damage;
         _size = +size;
+        transform.localScale = Vector3.one * _size;
         _speed = +speed;
         transform.rotation = quaternion;
+    }
+    private IEnumerator Coroutine_CheckVisibility()
+    {
+        yield return new WaitUntil(()=>_spriteRender.isVisible);
+        do
+        {
+            yield return new WaitForSeconds(2);
+        }
+        while (_spriteRender.isVisible);
+        GetComponent<TrailRenderer>().enabled = false;
+        gameObject.SetActive(false);
     }
 }

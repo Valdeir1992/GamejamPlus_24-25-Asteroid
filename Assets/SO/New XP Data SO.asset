@@ -14,8 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listXPValue:
   - Level: 1
-    Value: 10
+    Value: 20
   - Level: 2
-    Value: 15
+    Value: 40
   - Level: 3
-    Value: 25
+    Value: 200
+  - Level: 4
+    Value: 400
+  - Level: 5
+    Value: 600
+  - Level: 5
+    Value: 1000
+  - Level: 6
+    Value: 1500
+  - Level: 8
+    Value: 2000

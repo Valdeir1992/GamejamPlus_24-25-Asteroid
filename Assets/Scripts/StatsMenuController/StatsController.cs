@@ -24,7 +24,7 @@ public class StatsController : MonoBehaviour
 
     public void AddFireRate(float fireRate)
     {
-        mFireRate += fireRate;
+        mFireRate -= fireRate;
     }
     public void AddNumberProjetcs(int numProjetcs)
     {
